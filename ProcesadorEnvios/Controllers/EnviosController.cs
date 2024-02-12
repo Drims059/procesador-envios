@@ -136,12 +136,6 @@ namespace ProcesadorEnvios.Controllers
                 notificacion.operador = envio.operadorLogistico.nombre;
                 notificacion.nuevoEstado = envio.estadoEnvio;
 
-            //No lo puedo hacer andar con LINQ
-            // await suscriptores.ForEach(suscriptor =>
-            // {
-            //     EnviarNotificacion(suscriptor.urlRespuesta, notificacion.ToString());
-            // });
-
             foreach(SuscriptorWebhook s in suscriptores){
                 EnviarNotificacion(s.urlRespuesta, notificacion.ToString());
             }
