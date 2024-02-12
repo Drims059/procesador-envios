@@ -1,0 +1,553 @@
+{
+	"info": {
+		"_postman_id": "e9870f1e-bb5d-4a4f-98b1-18ba6737a653",
+		"name": "TPI-IAEW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12904927"
+	},
+	"item": [
+		{
+			"name": "https://localhost:7039/api/Operadores",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NTU3ODQ0LCJleHAiOjE2Njg2NDQyNDQsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.vtZK4T1dNdtuTEMFap6YiMGtFpEHuwefkUSL0XNgfuKBzqy40PftDedHE47X5bkPQNB8XSZQyJiAVI_2uKTaQR4kYJkWe9pPGZ4rxrJc7SsWYZ2_MbVHmZyNrnvGDngpO-gDR5YwV5vrHFErzOl61krIu1OKnaoduMOyxLzF7UENmBVfglb18uw0xKDRaX2dP4-lSk8Qsd-Q1nK4-QTMK9pYyObbC444Z0yvL_L5E4B3cAzsGcDYpFyueHbiE_KGhpvLO8Rrt7ZldpKwT3TrDkEQqMoQ8gsoMqF99optUYJsSKDZaAVrEiolmylqwuasschkskpbjCxhNpKxY9DFQA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"EntregaYa - Cande\",\r\n  \"url\": \"https://webhook.site/11664cf7-6098-4eb7-90cc-25099cfd4e95\",\r\n  \"cobertura\": [ \"Cordoba\",\"Tucuman\"],\r\n  \"auth0url\" : \"cande\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7039/api/Operadores",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7039",
+					"path": [
+						"api",
+						"Operadores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7039/api/Operadores/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NTU3ODQ0LCJleHAiOjE2Njg2NDQyNDQsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.vtZK4T1dNdtuTEMFap6YiMGtFpEHuwefkUSL0XNgfuKBzqy40PftDedHE47X5bkPQNB8XSZQyJiAVI_2uKTaQR4kYJkWe9pPGZ4rxrJc7SsWYZ2_MbVHmZyNrnvGDngpO-gDR5YwV5vrHFErzOl61krIu1OKnaoduMOyxLzF7UENmBVfglb18uw0xKDRaX2dP4-lSk8Qsd-Q1nK4-QTMK9pYyObbC444Z0yvL_L5E4B3cAzsGcDYpFyueHbiE_KGhpvLO8Rrt7ZldpKwT3TrDkEQqMoQ8gsoMqF99optUYJsSKDZaAVrEiolmylqwuasschkskpbjCxhNpKxY9DFQA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7039/api/Operadores/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7039",
+					"path": [
+						"api",
+						"Operadores",
+						"1"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7039/api/Envios",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NTU3ODQ0LCJleHAiOjE2Njg2NDQyNDQsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.vtZK4T1dNdtuTEMFap6YiMGtFpEHuwefkUSL0XNgfuKBzqy40PftDedHE47X5bkPQNB8XSZQyJiAVI_2uKTaQR4kYJkWe9pPGZ4rxrJc7SsWYZ2_MbVHmZyNrnvGDngpO-gDR5YwV5vrHFErzOl61krIu1OKnaoduMOyxLzF7UENmBVfglb18uw0xKDRaX2dP4-lSk8Qsd-Q1nK4-QTMK9pYyObbC444Z0yvL_L5E4B3cAzsGcDYpFyueHbiE_KGhpvLO8Rrt7ZldpKwT3TrDkEQqMoQ8gsoMqF99optUYJsSKDZaAVrEiolmylqwuasschkskpbjCxhNpKxY9DFQA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"direccionOrigen\": [\"Colon 200\",\"Cordoba\"],\r\n  \"direccionDestino\": [\"Independencia 25\",\"Cosquin\",\"Cordoba\"],\r\n  \"contactoComprador\": \"amogus@gmail.com\",\r\n  \"detalleProducto\": \"Auriculares\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7039/api/Envios",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7039",
+					"path": [
+						"api",
+						"Envios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7039/api/Envios/1",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NTU3ODQ0LCJleHAiOjE2Njg2NDQyNDQsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.vtZK4T1dNdtuTEMFap6YiMGtFpEHuwefkUSL0XNgfuKBzqy40PftDedHE47X5bkPQNB8XSZQyJiAVI_2uKTaQR4kYJkWe9pPGZ4rxrJc7SsWYZ2_MbVHmZyNrnvGDngpO-gDR5YwV5vrHFErzOl61krIu1OKnaoduMOyxLzF7UENmBVfglb18uw0xKDRaX2dP4-lSk8Qsd-Q1nK4-QTMK9pYyObbC444Z0yvL_L5E4B3cAzsGcDYpFyueHbiE_KGhpvLO8Rrt7ZldpKwT3TrDkEQqMoQ8gsoMqF99optUYJsSKDZaAVrEiolmylqwuasschkskpbjCxhNpKxY9DFQA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7039/api/Envios/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7039",
+					"path": [
+						"api",
+						"Envios",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7039/api/Envios/1/Novedades",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NTU3ODQ0LCJleHAiOjE2Njg2NDQyNDQsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.vtZK4T1dNdtuTEMFap6YiMGtFpEHuwefkUSL0XNgfuKBzqy40PftDedHE47X5bkPQNB8XSZQyJiAVI_2uKTaQR4kYJkWe9pPGZ4rxrJc7SsWYZ2_MbVHmZyNrnvGDngpO-gDR5YwV5vrHFErzOl61krIu1OKnaoduMOyxLzF7UENmBVfglb18uw0xKDRaX2dP4-lSk8Qsd-Q1nK4-QTMK9pYyObbC444Z0yvL_L5E4B3cAzsGcDYpFyueHbiE_KGhpvLO8Rrt7ZldpKwT3TrDkEQqMoQ8gsoMqF99optUYJsSKDZaAVrEiolmylqwuasschkskpbjCxhNpKxY9DFQA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"estadoEnvio\":\"enTransito\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7039/api/Envios/1/Novedades",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7039",
+					"path": [
+						"api",
+						"Envios",
+						"1",
+						"Novedades"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Suscripcion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"urlRespuesta\" : \"https://webhook.site/3980708f-ae3f-49c4-b1a8-5c1dd211b29e\", \r\n    \"servicios\": [\"ENVIO_UPDATE\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ecs-services-1705455222.us-east-1.elb.amazonaws.com/api/Suscriptores",
+					"protocol": "http",
+					"host": [
+						"ecs-services-1705455222",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"api",
+						"Suscriptores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7039/api/Patient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7039/api/Suscriptores",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7039",
+					"path": [
+						"api",
+						"Suscriptores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://dev-pmt16h97.us.auth0.com/oauth/token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"client_id\":\"C0L2So2k7ZBdKwhMCWwRZCZQYHqThX7a\",\"client_secret\":\"6pVQtQwSKefZ_4N6hTbo17NHfazaLcyp3gF1GqGLefl64eC_zn8RDrYuHvaYlWrH\",\"audience\":\"https://api.procesadorenvios.com\",\"grant_type\":\"client_credentials\"}"
+				},
+				"url": {
+					"raw": "https://dev-pmt16h97.us.auth0.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"dev-pmt16h97",
+						"us",
+						"auth0",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generar Operador",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NzEzMDA0LCJleHAiOjE2Njg3OTk0MDQsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.lUFMdcGCEDFyhWgzBy6VmYzs54CTHYi6oo5hiJHowyrWNUbzkMDSoVqb7z0YPNIhRSw3B09TShBm6rVsfY_LWo_fZOZKztim42EYIOhe1DE5Fj5_wrDM6CpyqIQd_v2xlh44J5_WfVsQTpLl_i7slg4iyX5utyBMqKVEKziduWXi1n04wB9JsfPE3a74R7URaarmM1rZsVoz4T7ma3M98KgJyHQJDuodi8c882qjTrDwZivl2nvobt70bmnLOz7im6Zpk6tiAIHgb2lmhaWFAJfEelXGjTKXwGt3G8TVoIIyQDJcflqLjBxIGuwSnpuXBw7oKZ6D6hJf0EdeSZgsnA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"EntregaYa - Sur\",\r\n  \"url\": \"https://webhook.site/3980708f-ae3f-49c4-b1a8-5c1dd211b29e\",\r\n  \"cobertura\": [ \"Tierra del Fuego\",\"Santa Cruz\",\"Chubut\"],\r\n  \"audience\": \"https://api.procesadorenvios.com\",\r\n  \"auth0url\": \"https://dev-pmt16h97.us.auth0.com\",\r\n  \"clientId\": \"C0L2So2k7ZBdKwhMCWwRZCZQYHqThX7a\",\r\n  \"clientSecret\": \"6pVQtQwSKefZ_4N6hTbo17NHfazaLcyp3gF1GqGLefl64eC_zn8RDrYuHvaYlWrH\"\r\n\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ecs-services-1705455222.us-east-1.elb.amazonaws.com/api/Operadores",
+					"protocol": "http",
+					"host": [
+						"ecs-services-1705455222",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"api",
+						"Operadores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generar Suscriptor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NTU3ODQ0LCJleHAiOjE2Njg2NDQyNDQsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.vtZK4T1dNdtuTEMFap6YiMGtFpEHuwefkUSL0XNgfuKBzqy40PftDedHE47X5bkPQNB8XSZQyJiAVI_2uKTaQR4kYJkWe9pPGZ4rxrJc7SsWYZ2_MbVHmZyNrnvGDngpO-gDR5YwV5vrHFErzOl61krIu1OKnaoduMOyxLzF7UENmBVfglb18uw0xKDRaX2dP4-lSk8Qsd-Q1nK4-QTMK9pYyObbC444Z0yvL_L5E4B3cAzsGcDYpFyueHbiE_KGhpvLO8Rrt7ZldpKwT3TrDkEQqMoQ8gsoMqF99optUYJsSKDZaAVrEiolmylqwuasschkskpbjCxhNpKxY9DFQA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"urlRespuesta\" : \"https://webhook.site/3980708f-ae3f-49c4-b1a8-5c1dd211b29e\", \r\n    \"servicios\": [\"ENVIO_UPDATE\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ecs-services-1705455222.us-east-1.elb.amazonaws.com/api/Suscriptores",
+					"protocol": "http",
+					"host": [
+						"ecs-services-1705455222",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"api",
+						"Suscriptores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generar Envio",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NzEzMDA0LCJleHAiOjE2Njg3OTk0MDQsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.lUFMdcGCEDFyhWgzBy6VmYzs54CTHYi6oo5hiJHowyrWNUbzkMDSoVqb7z0YPNIhRSw3B09TShBm6rVsfY_LWo_fZOZKztim42EYIOhe1DE5Fj5_wrDM6CpyqIQd_v2xlh44J5_WfVsQTpLl_i7slg4iyX5utyBMqKVEKziduWXi1n04wB9JsfPE3a74R7URaarmM1rZsVoz4T7ma3M98KgJyHQJDuodi8c882qjTrDwZivl2nvobt70bmnLOz7im6Zpk6tiAIHgb2lmhaWFAJfEelXGjTKXwGt3G8TVoIIyQDJcflqLjBxIGuwSnpuXBw7oKZ6D6hJf0EdeSZgsnA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"direccionOrigen\": [\"LAPRIDA 200\",\"Jujuy\"],\r\n  \"direccionDestino\": [\"Independencia 25\",\"Jujuy\",\"Jujuy\"],\r\n  \"contactoComprador\": \"candemperez@gmail.com\",\r\n  \"detalleProducto\": \"Pantalon - prueba\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ecs-services-1705455222.us-east-1.elb.amazonaws.com/api/Envios",
+					"protocol": "http",
+					"host": [
+						"ecs-services-1705455222",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"api",
+						"Envios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Operador",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NzEzMDA0LCJleHAiOjE2Njg3OTk0MDQsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.lUFMdcGCEDFyhWgzBy6VmYzs54CTHYi6oo5hiJHowyrWNUbzkMDSoVqb7z0YPNIhRSw3B09TShBm6rVsfY_LWo_fZOZKztim42EYIOhe1DE5Fj5_wrDM6CpyqIQd_v2xlh44J5_WfVsQTpLl_i7slg4iyX5utyBMqKVEKziduWXi1n04wB9JsfPE3a74R7URaarmM1rZsVoz4T7ma3M98KgJyHQJDuodi8c882qjTrDwZivl2nvobt70bmnLOz7im6Zpk6tiAIHgb2lmhaWFAJfEelXGjTKXwGt3G8TVoIIyQDJcflqLjBxIGuwSnpuXBw7oKZ6D6hJf0EdeSZgsnA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://ecs-services-1705455222.us-east-1.elb.amazonaws.com/api/Operadores/8",
+					"protocol": "http",
+					"host": [
+						"ecs-services-1705455222",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"api",
+						"Operadores",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Operador",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NzEwODMxLCJleHAiOjE2Njg3OTcyMzEsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.idnK2vQKSF0307UpvEhqmNwjxgnJTWG9w-fHskI7AVYNN40nOmH1Gz-Zn7guZ788mm0jdDOxOlAO05GIOCKOP6Lvh1J6fZoN9HBr2m7VtFrn7tdpk_c8pnWATUJqW8IhaYVig9yD0NU7LsLxuwutdmqLovjCQhRA5NGAMFq1vMpRh-y0oQ8265k7Pzges__n2xouymkCRvDkuoyoOhRHlIxBm0LKCOB00J-17pqruprU92Rvlr4pTWbb6VhpV5AYkfvIXKq4BnCeKIhbqDCF1gTVtPeTnZVNwDaFJV9oos9tYDnsQlD7ZezWoo3Y_inSFmjRbIiNb61c7HFoEbd0OA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ecs-services-1705455222.us-east-1.elb.amazonaws.com/api/Operadores/10",
+					"protocol": "http",
+					"host": [
+						"ecs-services-1705455222",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"api",
+						"Operadores",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Envio",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NzEzMDA0LCJleHAiOjE2Njg3OTk0MDQsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.lUFMdcGCEDFyhWgzBy6VmYzs54CTHYi6oo5hiJHowyrWNUbzkMDSoVqb7z0YPNIhRSw3B09TShBm6rVsfY_LWo_fZOZKztim42EYIOhe1DE5Fj5_wrDM6CpyqIQd_v2xlh44J5_WfVsQTpLl_i7slg4iyX5utyBMqKVEKziduWXi1n04wB9JsfPE3a74R7URaarmM1rZsVoz4T7ma3M98KgJyHQJDuodi8c882qjTrDwZivl2nvobt70bmnLOz7im6Zpk6tiAIHgb2lmhaWFAJfEelXGjTKXwGt3G8TVoIIyQDJcflqLjBxIGuwSnpuXBw7oKZ6D6hJf0EdeSZgsnA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ecs-services-1705455222.us-east-1.elb.amazonaws.com/api/Envios/28",
+					"protocol": "http",
+					"host": [
+						"ecs-services-1705455222",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"api",
+						"Envios",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Novedades",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IllreTM1STFaNmJIbGgtaGN2UnJUcyJ9.eyJpc3MiOiJodHRwczovL2Rldi1wbXQxNmg5Ny51cy5hdXRoMC5jb20vIiwic3ViIjoiQzBMMlNvMms3WkJkS3doTUNXd1JaQ1pRWUhxVGhYN2FAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLnByb2Nlc2Fkb3JlbnZpb3MuY29tIiwiaWF0IjoxNjY4NzIxNDQxLCJleHAiOjE2Njg4MDc4NDEsImF6cCI6IkMwTDJTbzJrN1pCZEt3aE1DV3dSWkNaUVlIcVRoWDdhIiwic2NvcGUiOiJyZWFkOnByb2Nlc2Fkb3JlbnZpb3Mgd3JpdGU6cHJvY2VzYWRvcmVudmlvcyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.P02_4Dbvv9E6UaeqanU1pNlWgDvSDnJfe8iu_xuHu_JB5AJj1vNn11YEAKh9CorUEs1o0MXta4KbzhqIq4aeyacTalaUMiUKnKhAZd9hpgKtCY2wbSodzelP4AWXATR2isGBdOdbmgDXtSfYT7-FFjfHc7UAePCPXYDe0POpnE5Qc0gcBg-8Abhemqzt65UsBmFL5pOqEHhggBo-RHADJoA69pvd_xextdr5DxjEiI3r-rBQTFL_LnGfW0w6kwCsmK-3Vf6OExZ0JRVTA5VgLTEDUCKMRfsym9pgnTgcCcRnd3JbPLfoKUDhh63nP8wyYj9OEi2ifzr-cIjPjRmiyw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"estadoEnvio\":\"enTransito\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ecs-services-1705455222.us-east-1.elb.amazonaws.com/api/Envios/28/Novedades",
+					"protocol": "http",
+					"host": [
+						"ecs-services-1705455222",
+						"us-east-1",
+						"elb",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"api",
+						"Envios",
+						"28",
+						"Novedades"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

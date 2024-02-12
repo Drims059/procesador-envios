@@ -1,0 +1,367 @@
+openapi: 3.0.3
+info:
+  title: Swagger - API Procesador de Envios
+  description: >-
+    API Backend que se encarga de generar órdenes de envíos en diferentes operadores logísticos de acuerdo al área de cobertura de cada uno y la dirección destino del envió, y llevar el seguimiento del estado del envío en tiempo real. Además, notifica vía webhook cuando el producto fue entregado
+  contact:
+    email: apiteam@swagger.io
+  version: 1.0.0
+servers:
+  - url: https://apiprocesadorenvio.swagger.io/api/v3
+tags:
+  - name: Envios
+    description: API que se encarga de la gestion de envios
+  - name: Operador
+    description: API que se encarga de la gestion de operadores logisticos
+paths:
+  /envio:
+    post:
+      tags:
+        - Envios
+      summary: Permite generar un envio y la orden que le corresponde
+      description: Permite dar el alta de envíos en el sistema y a su vez genera la orden de envío en el operador logístico que corresponda según el área de cobertura
+      operationId: agregarEnvio
+      requestBody:
+        description: Genera un envio y la orden que le corresponde
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Envio'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Envio'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Envio'
+        required: true
+      responses:
+        '200':
+          description: Operacion realizada con exito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envio'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Envio'
+        '405':
+          description: Datos ingresados invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+  /envio/{envioId}:
+    get:
+      tags:
+        - Envios
+      summary: Devuelve un envio por ID
+      description: Consulta el envio creado
+      operationId: obtenerEnvio
+      parameters:
+        - name: envioId
+          in: path
+          description: ID del envio
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Operacion realizada con exito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envio'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Envio'
+        '400':
+          description: ID no valida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+        '404':
+          description: Envio no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+      security:
+        - api_key: []
+        - petstore_auth:
+            - write:pets
+            - read:pets
+    post:
+      tags:
+        - Envios
+      summary: Actualiza el estado del envio
+      description: Alta de novedades de cambio de estado que se van a recibir desde el Operador Logístico.
+      operationId: actualizacionEstado
+      parameters:
+        - name: envioId
+          in: path
+          description: ID del envio a actualizar
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: status
+          in: query
+          description: Estado del envio
+          schema:
+            type: string
+      responses:
+        '405':
+          description: Datos ingresados invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+        '404':
+          description: Envio a actualizar no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'        
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+  /operador:
+    post:
+      tags:
+        - Operador
+      summary: Alta de un operador
+      description: Agregar un nuevo operador
+      operationId: agregarOperador
+      requestBody:
+        description: Crea un nuevo operador
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Operador'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Operador'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Operador'
+        required: true
+      responses:
+        '200':
+          description: Operacion realizada con exito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operador'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Operador'
+        '405':
+          description: Datos ingresados invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+  /operador/{operadorId}:
+    get:
+      tags:
+        - Operador
+      summary: Obtiene un operador
+      description: Devuelve un operador
+      operationId: obtenerOperador
+      parameters:
+        - name: operadorId
+          in: path
+          description: ID del operador a obtener
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Operacion realizada con exito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operador'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Operador'
+        '400':
+          description: ID ingresada invalida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+        '404':
+          description: Operador no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+      security:
+        - api_key: []
+        - petstore_auth:
+            - write:pets
+            - read:pets  
+    delete:
+      tags:
+        - Operador
+      summary: Borra un operador
+      description: Elimina un operador
+      operationId: eliminarOperador
+      parameters:
+        - name: api_key
+          in: header
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: operadorId
+          in: path
+          description: ID del operador a eliminar
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: ID invalida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+        '404':
+          description: Operador a eliminar no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorMessage'        
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+components:
+  schemas:
+    Envio:
+      type: object
+      properties:
+        direccionOrigen:
+          type: array
+          items:
+            type: string
+          example: ["Colon 200","Cosquin","Cordoba"]
+        direccionDestino:
+          type: array
+          items:
+            type: string
+          example: ["Independencia 25","Cosquin","Cordoba"]
+        contactoComprador:
+          type: string
+          example: "amogus@gmail.com"
+        detalleProducto:
+          type: string
+          description: Descripcion del producto
+          example: "Auriculares"
+      xml:
+        name: envio
+    Operador:
+      type: object
+      properties:
+        nombre:
+          type: string
+          example: "EntregaYa"
+        url:
+          type: string
+          example: "api/operador"
+        cobertura:
+          type: array
+          items:
+            type: string
+          example: ["Cordoba","Santa Fe","Tucuman"]
+      xml:
+        name: operador
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+    ErrorMessage:
+      type: object
+      properties:
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+  requestBodies:
+    Envio:
+      description: Envio por agregar
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Envio'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Envio'
+  securitySchemes:
+    petstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://petstore3.swagger.io/oauth/authorize
+          scopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header

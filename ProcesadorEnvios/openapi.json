@@ -1,0 +1,794 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swagger - API Procesador de Envios",
+    "description": "API Backend que se encarga de generar órdenes de envíos en diferentes operadores logísticos de acuerdo al área de cobertura de cada uno y la dirección destino del envió, y llevar el seguimiento del estado del envío en tiempo real. Además, notifica vía webhook cuando el producto fue entregado",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://apiprocesadorenvio.swagger.io/api/v3"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Envios",
+      "description": "API que se encarga de la gestion de envios"
+    },
+    {
+      "name": "Operador",
+      "description": "API que se encarga de la gestion de operadores logisticos"
+    },
+    {
+      "name": "Suscriptor",
+      "description": "API que se encarga de la gestión de suscriptores webhook"
+    }
+  ],
+  "paths": {
+    "/envio": {
+      "post": {
+        "tags": [
+          "Envios"
+        ],
+        "summary": "Permite generar un envio y la orden que le corresponde",
+        "description": "Permite dar el alta de envíos en el sistema y a su vez genera la orden de envío en el operador logístico que corresponda según el área de cobertura",
+        "operationId": "AgregarEnvio",
+        "requestBody": {
+          "description": "Genera un envio y la orden que le corresponde",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Envio"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Envio"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Envio"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operacion realizada con exito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envio"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envio"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Datos ingresados invalidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "procesadorenvios_auth": [
+              "write:procesadorenvios"
+            ]
+          }
+        ]
+      }
+    },
+    "/envio/{envioId}": {
+      "get": {
+        "tags": [
+          "Envios"
+        ],
+        "summary": "Devuelve un envio por ID",
+        "description": "Consulta el envio creado",
+        "operationId": "ObtenerEnvio",
+        "parameters": [
+          {
+            "name": "envioId",
+            "in": "path",
+            "description": "ID del envio",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion realizada con exito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envio"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Envio"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ID no valida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Envio no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "procesadorenvios_auth": [
+              "read:procesadorenvios"
+            ]
+          }
+        ]
+      }
+    },
+    "/envio/{envioId}/novedades": {
+      "post": {
+        "tags": [
+          "Envios"
+        ],
+        "summary": "Actualiza el estado del envio",
+        "description": "Alta de novedades de cambio de estado que se van a recibir desde el Operador Logístico.",
+        "operationId": "ActualizacionEstado",
+        "parameters": [
+          {
+            "name": "envioId",
+            "in": "path",
+            "description": "ID del envio a actualizar",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Actualiza el estado del envio correspondiente",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Novedades"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "405": {
+            "description": "Datos ingresados invalidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Envio a actualizar no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "procesadorenvios_auth": [
+              "write:procesadorenvios"
+            ]
+          }
+        ]
+      }
+    },
+    "/operador": {
+      "post": {
+        "tags": [
+          "Operador"
+        ],
+        "summary": "Alta de un operador",
+        "description": "Agregar un nuevo operador",
+        "operationId": "agregarOperador",
+        "requestBody": {
+          "description": "Crea un nuevo operador",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Operador"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Operador"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Operador"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operacion realizada con exito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Operador"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Operador"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Datos ingresados invalidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "procesadorenvios_auth": [
+              "write:procesadorenvios"
+            ]
+          }
+        ]
+      }
+    },
+    "/operador/{operadorId}": {
+      "get": {
+        "tags": [
+          "Operador"
+        ],
+        "summary": "Obtiene un operador",
+        "description": "Devuelve un operador",
+        "operationId": "obtenerOperador",
+        "parameters": [
+          {
+            "name": "operadorId",
+            "in": "path",
+            "description": "ID del operador a obtener",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion realizada con exito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Operador"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Operador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ID ingresada invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Operador no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "procesadorenvios_auth": [
+              "read:procesadorenvios"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Operador"
+        ],
+        "summary": "Borra un operador",
+        "description": "Elimina un operador",
+        "operationId": "eliminarOperador",
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "operadorId",
+            "in": "path",
+            "description": "ID del operador a eliminar",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "ID invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Operador a eliminar no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "procesadorenvios_auth": [
+              "write:procesadorenvios"
+            ]
+          }
+        ]
+      }
+    },
+    "/suscriptores": {
+      "get": {
+        "tags": [
+          "Suscriptor"
+        ],
+        "summary": "Obtiene todos los suscriptores",
+        "description": "Devuelve todos los suscriptores",
+        "operationId": "obtenerSuscriptores",
+        "responses": {
+          "200": {
+            "description": "Operacion realizada con exito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suscriptor"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suscriptor"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Suscriptor"
+        ],
+        "summary": "Permite cargar un suscriptor webhook",
+        "description": "Permite dar el alta de suscriptores webhook al sistema para recibir notifiaciones ante algunso eventos",
+        "operationId": "agregarSuscriptor",
+        "requestBody": {
+          "description": "Genera un suscriptor",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Suscriptor"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Suscriptor"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Suscriptor"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operacion realizada con exito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suscriptor"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suscriptor"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Datos ingresados invalidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/suscriptores/{suscriptorId}": {
+      "get": {
+        "tags": [
+          "Suscriptor"
+        ],
+        "summary": "Obtiene un suscriptor webhook",
+        "description": "Devuelve un suscriptor webhook",
+        "operationId": "obtenerSuscriptor",
+        "parameters": [
+          {
+            "name": "suscriptorId",
+            "in": "path",
+            "description": "ID del suscriptor a obtener",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operacion realizada con exito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suscriptor"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Suscriptor"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "ID ingresada invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Suscriptor no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorMessage"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Envio": {
+        "type": "object",
+        "properties": {
+          "direccionOrigen": {
+            "type": "array",
+            "items":{
+              "type":"string",
+              "example": ["Colon 200","Cosquin","Cordoba"]
+            }
+          },
+          "direccionDestino": {
+            "type": "array",
+            "items":{
+              "type":"string",
+              "example": ["Independencia 25","Cosquin","Cordoba"]
+            }    
+          },
+          "contactoComprador": {
+            "type": "string",
+            "example": "amogus@gmail.com"
+          },
+          "detalleProducto": {
+            "type": "string",
+            "description": "Descripcion del producto",
+            "example": "Auriculares"
+          }
+        }
+      },
+      "Novedades": {
+        "type": "object",
+        "properties": {
+          "estadoEnvio": {
+            "type": "array",
+            "example": "enTransito"
+          }
+        }
+      },
+      "Operador": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "example": "EntregaYa"
+          },
+          "url": {
+            "type": "string",
+            "example": "api/operador"
+          },
+          "cobertura": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Cordoba",
+              "Santa Fe",
+              "Tucuman"
+            ]
+          },
+          "auth0url": {
+            "type": "string",
+            "example": "https://dev-pmhwrtjh97.us.auth0.com/oauth/token"
+          },
+          "clientId": {
+            "type": "string",
+            "example": "C0L2So2k7ZBdKwhadghtqerqerZQYHqThX7a"
+          },
+          "clientSecret": {
+            "type": "string",
+            "example": "6pVQtQwSKefZ_4N6hTbo17qethvazgF1GqGLefl64eC_zn8RDrYuHvaYlWrH"
+          },
+          "audience": {
+            "type": "string",
+            "example": "https://api.procesadorenvios.com"
+          }
+        },
+        "xml": {
+          "name": "operador"
+        }
+      },
+      "Suscriptor": {
+        "type": "object",
+        "properties": {
+          "urlRespuesta": {
+            "type": "string",
+            "example": "miurl.com/notificaciones"
+          },
+          "servicios": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "ENVIO_UPDATE",
+              "OPERADOR_CREATED"
+            ]
+          }
+        },
+        "xml": {
+          "name": "operador"
+        }
+      },
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "##default"
+        }
+      },
+      "ErrorMessage": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "xml": {
+          "name": "##default"
+        }
+      }
+    },
+    "requestBodies": {
+      "Envio": {
+        "description": "Envio por agregar",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Envio"
+            }
+          },
+          "application/xml": {
+            "schema": {
+              "$ref": "#/components/schemas/Envio"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "procesadorenvios_auth": {
+        "type": "oauth2",
+        "flows": {
+          "client_credentials": {
+            "authorizationUrl": "https://dev-pmt16h97.us.auth0.com/oauth/token",
+            "client_id": "C0L2So2k7ZBdKwhMCWwRZCZQYHqThX7a",
+            "client_secret": "6pVQtQwSKefZ_4N6hTbo17NHfazaLcyp3gF1GqGLefl64eC_zn8RDrYuHvaYlWrH",
+            "audience":"https://api.procesadorenvios.com",
+            "scopes": {
+              "write:procesadorenvios": "alta/modificacion",
+              "read:procesadorenvios": "lectura"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
