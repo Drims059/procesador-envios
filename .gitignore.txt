@@ -1,8 +1,0 @@
-# .gitignore file for a .NET project
-
-# Binaries
-ProcesadorEnvios/bin/
-ProcesadorEnvios/obj/
-
-# Visual Studio Code directories
-.vscode/
