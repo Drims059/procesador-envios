@@ -10,3 +10,5 @@ Permite también:
 Además la API esta securizada mediante Auth0 y fue desplegada en AWS utilizando Docker y AWS Fargate
 
 Las tecnologías utilizadas fueron: C#, .NET 6.0, EntityFramework, SQLServer, Docker, AWS Fargate
+
+Documentación en Swagger: https://app.swaggerhub.com/apis/XELA059/swagger-api_procesador_de_envios/1.0.0
