@@ -776,11 +776,8 @@
       "procesadorenvios_auth": {
         "type": "oauth2",
         "flows": {
-          "client_credentials": {
-            "authorizationUrl": "https://dev-pmt16h97.us.auth0.com/oauth/token",
-            "client_id": "C0L2So2k7ZBdKwhMCWwRZCZQYHqThX7a",
-            "client_secret": "6pVQtQwSKefZ_4N6hTbo17NHfazaLcyp3gF1GqGLefl64eC_zn8RDrYuHvaYlWrH",
-            "audience":"https://api.procesadorenvios.com",
+          "clientCredentials": {
+            "tokenUrl": "https://dev-pmt16h97.us.auth0.com/oauth/token",
             "scopes": {
               "write:procesadorenvios": "alta/modificacion",
               "read:procesadorenvios": "lectura"
