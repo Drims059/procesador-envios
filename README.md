@@ -7,6 +7,6 @@ Permite también:
   - Manejar el estado de los pedidos
   - Suscribir nuevos operadores para luego ser notificados mediante webhooks
 
-Además la API esta securizada mediante Auth0 
+Además la API esta securizada mediante Auth0 y fue desplegada en AWS utilizando Docker y AWS Fargate
 
 Las tecnologías utilizadas fueron: C#, .NET 6.0, EntityFramework, SQLServer, Docker, AWS Fargate
